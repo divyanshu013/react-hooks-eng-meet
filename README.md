@@ -25,7 +25,7 @@ Hooks are functions which lets you reuse stateful logic (without changing your c
 Here's a simple React component:
 
 ```js
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Example() {
   // Declare a new state variable, which we'll call "count"
@@ -34,15 +34,13 @@ function Example() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
 ```
 
-This helps us avoid creating a *wrapper hell* of components and solves problems with using patterns such as **higher order components** and **render props**.
+This helps us avoid creating a _wrapper hell_ of components and solves problems with using patterns such as **higher order components** and **render props**.
 
 - React hooks were introduced in v16.8
 - Added in the recent React Native release v0.59
@@ -55,13 +53,36 @@ This helps us avoid creating a *wrapper hell* of components and solves problems 
 
 - Reduce complexity of components by creating smaller reusable stateful functions.
 - Co-locate the stateful logic together
-    - Think setting up an event listener on mount and removing it before unmount
-    - Easier to write tests
-    - Avoids needs for an external state management library
-- Instead of separating out component logic based on lifecycles, think about separating stateful logic in terms of the functionality it provides
-- 
+  - Think setting up an event listener on mount and removing it before unmount
+  - Easier to write tests
+  - Avoids needs for an external state management library
+- Instead of separating out component logic based on lifecycles, think about separating stateful logic in terms of the functionality it provides. [Think](https://github.com/react-native-hooks):
+  - use network status?
+  - use device orientation?
+  - use clip board?
+  - [use your imagination...](https://reactjs.org/docs/hooks-custom.html#useyourimagination)
+- Use react without classes
+  - `class` is just a syntactical sugar
+    - `this` doesn't work the same way in javascript as it works in other languages
+    - react components are closer to functions (as is javascript)
+  - with the advent of frontend frameworks (such as [Svelte](https://svelte.dev/)) we're looking at the next level of optimizations
+    - ahead of time compilation
+    - classes are harder to optimize
+    - don't minify well
+    - makes hot reloading flaky
+
+## Demo
+
+1. `useState` hook to refactor `CounterClass` into `CounterWithHooks`
+2. Creating a custom hook `useDocumentTitle`
+
+- set the title after updating count
+- set a title initially
+- set a title initially and let it update as we keep increasing count
 
 ## Learning resources
 
 - [React docs](https://reactjs.org/docs/hooks-intro.html)
 - [React Native hooks examples](https://github.com/react-native-hooks)
+
+Wanna discuss something? Drop me a message [@divyanshu013](https://twitter.com/divyanshu013) or slack `@divyanshu` 👋
