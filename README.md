@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Hooks Talk for InstaWork Engineering Meet
 
-## Available Scripts
+**May 29, 2019**
 
-In the project directory, you can run:
+## Running this project
 
-### `npm start`
+1. Clone the repo and `cd` into the project
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Install dependencies:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```sh
+yarn
+```
 
-### `npm test`
+3. Start the dev server:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+yarn start
+```
 
-### `npm run build`
+## Introduction
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Hooks are functions which lets you reuse stateful logic (without changing your component hierarchy)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Here's a simple React component:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+import React, { useState } from 'react';
 
-### `npm run eject`
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This helps us avoid creating a *wrapper hell* of components and solves problems with using patterns such as **higher order components** and **render props**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- React hooks were introduced in v16.8
+- Added in the recent React Native release v0.59
+- Completely opt-in with no breaking changes
+- Classes will still work
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Why hooks?
 
-## Learn More
+[Read the motivation behind hooks](https://reactjs.org/docs/hooks-intro.html#motivation)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Reduce complexity of components by creating smaller reusable stateful functions.
+- Co-locate the stateful logic together
+    - Think setting up an event listener on mount and removing it before unmount
+    - Easier to write tests
+    - Avoids needs for an external state management library
+- Instead of separating out component logic based on lifecycles, think about separating stateful logic in terms of the functionality it provides
+- 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Learning resources
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [React docs](https://reactjs.org/docs/hooks-intro.html)
+- [React Native hooks examples](https://github.com/react-native-hooks)
